@@ -64,13 +64,12 @@ Completded a machine learning approach to building recommendations. Using the us
 <a name="summary"></a>
 ## Summary of Project
 
-1. If we were given a new user, any ranked based algorithem would work like get_top_article_ids or get_top_articles function.
-
-  Another way we can approach this cold start problem is to use a knowledge base recommend system. Let the new user filter out article type, post time, view numbers etc. then we give back the top ranked articles accordingly.
+1. If we were given a new user, any ranked based algorithem would work like get_top_article_ids or get_top_articles function. Another way we can approach this cold start problem is to use a knowledge base recommend system. Let the new user filter out article type, post time, view numbers etc. then we give back the top ranked articles accordingly.
+  
 2. Here we can use SVD becuase there is no missing values in our user_item matrix. we only care about if an user interacted with each article, so there are only binary values to represent yes or no. In the lesson though, user-item matrix is a table contains ranked values each user scored each movie, we can't simply assign a score to a missing value, that will be unfairly represents how popular the movie is and it will affect our recommendation system accuracy.
 3. When we use small amount of latent features, most of values will be predicted 0 as no interaction, which is likely to be true consider how spase user-item matrix is (more than 50% of users only interact with 3 or less articles). This drive the overall accuracy high. As we increase number of latent features, more values will be predicated 1 as interaction occur, this should increase the accuracy for individual users but on the other hand drive the overall accuracy down.
 
-  Given the circumstances like this, we can consider run an A/B test to see if our KPI increase. This means we will also need to consider other KPI to measure user retention. Some examples like:
+Given the circumstances like this, we can consider run an A/B test to see if our KPI increase. This means we will also need to consider other KPI to measure user retention. Some examples like:
 
 * user engagement score
 * DAU (daily activity user)
