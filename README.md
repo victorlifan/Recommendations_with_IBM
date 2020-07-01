@@ -13,9 +13,8 @@ Project is created on 2020 Jun 23.
 	1. [Exploratory Data Analysis](#eda)
 	2. [Rank Based Recommendations](#rbr)
 	3. [User-User Based Collaborative Filtering](#ubr)
-
-  4.  [Content Based Recommendations (EXTRA - NOT REQUIRED)](#cbr)
-  5.  [Matrix Factorization](#mf)
+	4. [Content Based Recommendations (EXTRA - NOT REQUIRED)](#cbr)
+	5. [Matrix Factorization](#mf)
 3. [Dataset](#Dataset)
 4. [Summary of Project](#summary)
 5. [Files](#About)
