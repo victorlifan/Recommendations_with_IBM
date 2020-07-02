@@ -51,21 +51,12 @@ In order to build better recommendations for the users of IBM's platform, we cou
 ##### 4. Content Based Recommendations (EXTRA - NOT REQUIRED)
 After investigating `df_content` I found out there are only 437 ids show in both dataframes, leaves 277 ids in `df` but not in `df_content`. Therefor I decided to use `df` 'title' column to preform Content Based Recommendations.
 
-###### Workflow
-
-* NLP
-    * remove punctuation and stop words (eng)
-    * stem words
-    * Tfidf vectorize
-* Create dot prodcut of article_id * article_id
-* Sort dot product of given article_id after excluding article_id itself in descending order
-* Return result
-    * for cold start issue (new user): return top rank articles for cold start issue (new user)
-    * for user id in data base: return descending ordered result after excluding articles uer interacted already
+The basic idea is to perform NLP technique (normalize then Tfidf) vectorize each titles, then use dot product to sort most similar articles according to their titles.
 
 If we can map a better relationship between two data frames, we can consider performing NLP technique on doc_body, this might imporve dot product accuracy which will imporve recommendation results.
 
-<img src="ima/moviemat.png" alt="Dot Product" height="500" width="500">
+<img src="ima/dotprod1.png" alt="Dot Product" height="300" width="500">
+<img src="ima/moviemat.png" alt="Dot Product" height="300" width="500">
 
 <a name='mf'></a>
 ##### 5. Matrix Factorization
