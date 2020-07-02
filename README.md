@@ -49,7 +49,23 @@ In order to build better recommendations for the users of IBM's platform, we cou
 
 <a name='cbr'></a>
 ##### 4. Content Based Recommendations (EXTRA - NOT REQUIRED)
-Given the amount of content available for each article, there are a number of different ways in which someone might choose to implement a content based recommendations system. Using your NLP skills, you might come up with some extremely creative ways to develop a content based recommendation system. You are encouraged to complete a content based recommendation system, but not required to do so to complete this project.
+After investigating `df_content` I found out there are only 437 ids show in both dataframes, leaves 277 ids in `df` but not in `df_content`. Therefor I decided to use `df` 'title' column to preform Content Based Recommendations.
+
+###### Workflow
+
+* NLP
+    * remove punctuation and stop words (eng)
+    * stem words
+    * Tfidf vectorize
+* Create dot prodcut of article_id * article_id
+* Sort dot product of given article_id after excluding article_id itself in descending order
+* Return result
+    * for cold start issue (new user): return top rank articles for cold start issue (new user)
+    * for user id in data base: return descending ordered result after excluding articles uer interacted already
+
+If we can map a better relationship between two data frames, we can consider performing NLP technique on doc_body, this might imporve dot product accuracy which will imporve recommendation results.
+
+<img src="ima/moviemat.png" alt="Dot Product" height="500" width="500">
 
 <a name='mf'></a>
 ##### 5. Matrix Factorization
@@ -65,7 +81,7 @@ Completded a machine learning approach to building recommendations. Using the us
 ## Summary of Project
 
 1. If we were given a new user, any ranked based algorithem would work like get_top_article_ids or get_top_articles function. Another way we can approach this cold start problem is to use a knowledge base recommend system. Let the new user filter out article type, post time, view numbers etc. then we give back the top ranked articles accordingly.
-  
+
 2. Here we can use SVD becuase there is no missing values in our user_item matrix. we only care about if an user interacted with each article, so there are only binary values to represent yes or no. In the lesson though, user-item matrix is a table contains ranked values each user scored each movie, we can't simply assign a score to a missing value, that will be unfairly represents how popular the movie is and it will affect our recommendation system accuracy.
 3. When we use small amount of latent features, most of values will be predicted 0 as no interaction, which is likely to be true consider how spase user-item matrix is (more than 50% of users only interact with 3 or less articles). This drive the overall accuracy high. As we increase number of latent features, more values will be predicated 1 as interaction occur, this should increase the accuracy for individual users but on the other hand drive the overall accuracy down.
 
